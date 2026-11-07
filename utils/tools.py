@@ -181,6 +181,14 @@ def synth_samples(targets, predictions, vocoder, model_config, preprocess_config
         else:
             energy = predictions[3][i, :mel_len].detach().cpu().numpy()
 
+        result_base = os.path.join(path, "variance_adaptor")
+        os.makedirs(os.path.join(result_base, "duration"), exist_ok=True)
+        os.makedirs(os.path.join(result_base, "pitch"), exist_ok=True)
+        os.makedirs(os.path.join(result_base, "energy"), exist_ok=True)
+        np.save(os.path.join(result_base, "duration", "{}.npy".format(basename)), duration)
+        np.save(os.path.join(result_base, "pitch", "{}.npy".format(basename)), pitch)
+        np.save(os.path.join(result_base, "energy", "{}.npy".format(basename)), energy)
+
         with open(
             os.path.join(preprocess_config["path"]["preprocessed_path"], "stats.json")
         ) as f:

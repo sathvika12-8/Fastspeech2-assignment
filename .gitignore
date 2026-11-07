@@ -116,3 +116,24 @@ output/
 *.npy
 TextGrid/
 hifigan/*.pth.tar
+
+# Assignment generated files
+Results/
+Svarah_repo/
+mfa_output/
+mfa_telugu_full/
+mfa_telugu_full_output/
+mfa_telugu_json/
+mfa_telugu_model/
+mfa_telugu_val_output/
+preprocessed_data/
+config/English/
+config/Telugu/
+
+# Generated/test audio
+*.wav
+
+# Selection/temporary files
+indictts_telugu_selection.csv
+svarah_selection.csv
+text/symbols.py.telugu_backup

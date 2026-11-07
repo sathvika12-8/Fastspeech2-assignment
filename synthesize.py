@@ -206,6 +206,8 @@ if __name__ == "__main__":
             texts = np.array([preprocess_english(args.text, preprocess_config)])
         elif preprocess_config["preprocessing"]["text"]["language"] == "zh":
             texts = np.array([preprocess_mandarin(args.text, preprocess_config)])
+        else:
+            texts = np.array([text_to_sequence(args.text, preprocess_config["preprocessing"]["text"]["text_cleaners"])], dtype=np.int64)
         text_lens = np.array([len(texts[0])])
         batchs = [(ids, raw_texts, speakers, texts, text_lens, max(text_lens))]
 
